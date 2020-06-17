@@ -1,0 +1,109 @@
+// const bcrypt = require('bcrypt');
+// const saltRounds = 10;
+
+
+
+// app.route("/login")
+
+//     .get((req, res) => {
+//         res.render("login", {
+//             uexist:'Email',
+//             pwexist: "password"
+//         })
+//     })
+
+//     .post((req, res) => {
+//         const username = req.body.username
+//         const password = req.body.password
+//         User.findOne({
+//             user_email: username
+//         }, (err, founduser) => {
+//             if (err) {
+//                 console.log(err)
+//             } else {
+                
+//                 if (founduser) {
+//                     bcrypt.compare(password, founduser.user_password, function (err, result) {
+//                         if (result === true) {
+//                             res.render("secrets")
+//                         } else {
+
+//                             res.render("login", {
+//                                 uexist: "",
+//                                 pwexist: 'invalid password'
+//                             })
+
+
+//                         }
+//                     });
+                    
+//                 }
+//                 else{
+//                     res.render("login", {
+//                         uexist: "User does not exist Please register",
+//                         pwexist: ''
+//                     })
+
+//                 }
+//             }
+//         })
+//     })
+
+
+// app.route("/register")
+
+//     .get((req, res) => {
+//         res.render("register", {
+//             exist: ""
+//         })
+//     })
+
+//     .post((req, res) => {
+
+//         User.findOne({
+//             user_email: req.body.username
+//         }, (err, user) => {
+//             if (!err) {
+//                 console.log(user)
+//                 if (user) {
+//                     res.render("register", {
+//                         exist: "User Exist"
+//                     })
+//                     res.redirect("/login")
+
+
+//                 } else {
+//                     bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
+//                         if (!err) {
+//                             const Register = new User({
+//                                 user_email: req.body.username,
+//                                 user_password: hash
+//                             })
+//                             Register.save((err) => {
+//                                 if (err) {
+//                                     console.log(err)
+//                                 } else { res.render('secrets') }
+
+//                             });}
+                        
+//                     });
+                    
+
+
+//                 }
+//             }
+//         })
+
+
+//     })
+
+
+
+ // user_data:userdataSchema
+
+
+// const userdataSchema = new mongoose.Schema({
+//     name:{type:String}
+// })
+
+// const UserData = new.mongoose.model('UserData' , userdataSchema)
