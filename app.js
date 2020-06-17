@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 const passport = require("passport")
 const passportLocalMongoose = require('passport-local-mongoose')
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const app = express()
 
 app.use(bodyparser.urlencoded({
@@ -15,9 +16,9 @@ app.use(bodyparser.urlencoded({
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
-
+const code = process.env.SECRET
 app.use(session({
-    secret: "CiAsecurity",
+    secret: code,
     resave: false,
     saveUninitialized: false
 }))
